@@ -87,17 +87,38 @@ if (loginCancelBtn) {
     loginCancelBtn.addEventListener("click", closeLoginModal);
 }
 
+function isImageFile(src, name) {
+    if (/\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(name || "")) return true;
+    return /^data:image\//i.test(src || "");
+}
+
+function isPdfFile(src, name) {
+    if (/\.pdf$/i.test(name || "")) return true;
+    return /^data:application\/pdf/i.test(src || "");
+}
+
 function addImageToGallery(src, name) {
     const imgWrapper = document.createElement("div");
     imgWrapper.className = "gallery-item";
+    imgWrapper.dataset.src = src;
 
-    const img = document.createElement("img");
-    img.src = src;
+    let previewEl;
 
-    img.addEventListener("click", function () {
-        lightboxImg.src = src;
-        lightbox.classList.add("active");
-    });
+    if (isImageFile(src, name)) {
+        previewEl = document.createElement("img");
+        previewEl.src = src;
+        previewEl.addEventListener("click", function () {
+            lightboxImg.src = src;
+            lightbox.classList.add("active");
+        });
+    } else {
+        previewEl = document.createElement("div");
+        previewEl.className = "file-card";
+        previewEl.textContent = isPdfFile(src, name) ? "📄 PDF" : "📁 File";
+        previewEl.addEventListener("click", function () {
+            window.open(src, "_blank");
+        });
+    }
 
     const nameEl = document.createElement("div");
     nameEl.className = "filename";
@@ -118,17 +139,20 @@ function addImageToGallery(src, name) {
         }
     });
 
-    imgWrapper.appendChild(img);
+    imgWrapper.appendChild(previewEl);
     imgWrapper.appendChild(nameEl);
     imgWrapper.appendChild(deleteBtn);
     gallery.appendChild(imgWrapper);
 }
 
 function saveGalleryToStorage() {
-    const items = Array.from(gallery.children).map(item => ({
-        src: item.querySelector("img").src,
-        name: item.querySelector(".filename").textContent
-    }));
+    const items = Array.from(gallery.children).map(item => {
+        const img = item.querySelector("img");
+        return {
+            src: img ? img.src : item.dataset.src,
+            name: item.querySelector(".filename").textContent
+        };
+    });
     localStorage.setItem("portfolioGallery", JSON.stringify(items));
 }
 

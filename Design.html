@@ -82,6 +82,20 @@
             display: block;
         }
 
+        .file-card {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+
         .gallery-item .filename {
             font-size: 12px;
             text-align: center;
@@ -171,7 +185,7 @@
     <div id="uploadArea">
         <button id="ownerLoginBtn">🔒 Owner Login</button>
         <br>
-        <input type="file" id="imageInput" accept="image/*" multiple class="hidden">
+        <input type="file" id="imageInput" multiple class="hidden">
     </div>
 
     <div id="loginModal" class="hidden">
