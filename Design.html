@@ -94,6 +94,7 @@
             font-size: 20px;
             cursor: pointer;
             text-align: center;
+            text-decoration: none;
         }
 
         .gallery-item .filename {
@@ -199,7 +200,20 @@
         </div>
     </div>
 
-    <div id="gallery"></div>
+    <div id="gallery">
+        <div class="gallery-item">
+            <img src="Quiz1.png" alt="Quiz 1">
+            <div class="filename">Quiz1.png</div>
+        </div>
+
+        <div class="gallery-item">
+            <a href="Borquillo-Lab1.pdf" target="_blank">
+                <div class="file-card">📄 PDF</div>
+            </a>
+            <div class="filename">Borquillo-Lab1.pdf</div>
+        </div>
+    </div>
+
     <div id="lightbox">
         <span id="lightboxClose">&times;</span>
         <img id="lightboxImg" src="" alt="Full size preview">
