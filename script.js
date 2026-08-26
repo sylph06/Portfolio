@@ -87,6 +87,27 @@ if (loginCancelBtn) {
     loginCancelBtn.addEventListener("click", closeLoginModal);
 }
 
+function dataURLtoBlob(dataUrl) {
+    const [header, base64] = dataUrl.split(",");
+    const mimeMatch = header.match(/data:(.*?);base64/);
+    const mime = mimeMatch ? mimeMatch[1] : "application/octet-stream";
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+    }
+    return new Blob([bytes], { type: mime });
+}
+
+function openFile(src) {
+    if (src.startsWith("data:")) {
+        const blob = dataURLtoBlob(src);
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, "_blank");
+    } else {
+        window.open(src, "_blank");
+    }
+}
 function isImageFile(src, name) {
     if (/\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(name || "")) return true;
     return /^data:image\//i.test(src || "");
@@ -116,7 +137,7 @@ function addImageToGallery(src, name) {
         previewEl.className = "file-card";
         previewEl.textContent = isPdfFile(src, name) ? "📄 PDF" : "📁 File";
         previewEl.addEventListener("click", function () {
-            window.open(src, "_blank");
+            openFile(src);
         });
     }
 
