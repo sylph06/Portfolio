@@ -39,25 +39,6 @@
             cursor: pointer;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        #ownerLoginBtn {
-            padding: 8px 16px;
-            background: white;
-            color: rgb(113, 49, 177);
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        #ownerLoginBtn:hover {
-            opacity: 0.85;
-        }
-
         #gallery {
             display: flex;
             flex-wrap: wrap;
@@ -82,101 +63,11 @@
             display: block;
         }
 
-        .file-card {
-            width: 200px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            border: 2px solid white;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 20px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-        }
-
         .gallery-item .filename {
             font-size: 12px;
             text-align: center;
             margin-top: 5px;
             word-break: break-all;
-        }
-
-        .delete-btn {
-            display: block;
-            margin: 6px auto 0 auto;
-            padding: 4px 10px;
-            background: #b02a2a;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .delete-btn:hover {
-            background: #d13a3a;
-        }
-
-        #loginModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #loginModal.active {
-            display: flex;
-        }
-
-        #loginModalBox {
-            background: rgb(80, 35, 130);
-            border: 2px solid white;
-            border-radius: 10px;
-            padding: 20px 25px;
-            text-align: center;
-            min-width: 250px;
-        }
-
-        #ownerPasswordInput {
-            width: 100%;
-            padding: 8px;
-            margin-top: 10px;
-            border-radius: 6px;
-            border: none;
-            color: black;
-        }
-
-        #loginModalButtons {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        #loginModalButtons button {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        #loginSubmitBtn {
-            background: white;
-            color: rgb(113, 49, 177);
-        }
-
-        #loginCancelBtn {
-            background: #b02a2a;
-            color: white;
         }
     </style>
 <h3 id="back"><a href="index.html">Back to Portfolio</a></h3>
@@ -184,36 +75,10 @@
     <h2>My Designs</h2>
 
     <div id="uploadArea">
-        <button id="ownerLoginBtn">🔒 Owner Login</button>
-        <br>
-        <input type="file" id="imageInput" multiple class="hidden">
+        <input type="file" id="imageInput" accept="image/*" multiple>
     </div>
 
-    <div id="loginModal" class="hidden">
-        <div id="loginModalBox">
-            <h3 style="padding:5px;">Owner Login</h3>
-            <input type="password" id="ownerPasswordInput" placeholder="Enter password" autocomplete="off">
-            <div id="loginModalButtons">
-                <button id="loginSubmitBtn">Login</button>
-                <button id="loginCancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="gallery">
-        <div class="gallery-item">
-            <img src="Quiz1.png" alt="Quiz 1">
-            <div class="filename">Quiz1.png</div>
-        </div>
-
-        <div class="gallery-item">
-            <a href="Borquillo-Lab1.pdf" target="_blank">
-                <div class="file-card">📄 PDF</div>
-            </a>
-            <div class="filename">Borquillo-Lab1.pdf</div>
-        </div>
-    </div>
-
+    <div id="gallery"></div>
     <div id="lightbox">
         <span id="lightboxClose">&times;</span>
         <img id="lightboxImg" src="" alt="Full size preview">
