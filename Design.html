@@ -14,31 +14,15 @@
             box-sizing: border-box;
             color: white;
         }
-
         body {
             background-color: rgb(113, 49, 177);
             font-family: Arial, sans-serif;
             min-height: 100vh;
         }
-
         h2, h3 {
             text-align: center;
             padding: 15px;
         }
-
-        #uploadArea {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        #imageInput {
-            padding: 10px;
-            background: white;
-            color: black;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
         #gallery {
             display: flex;
             flex-wrap: wrap;
@@ -49,11 +33,9 @@
             overflow-y: auto;
             margin: 0 20px 40px 20px;
         }
-
         .gallery-item {
             position: relative;
         }
-
         .gallery-item img {
             width: 200px;
             height: 200px;
@@ -62,23 +44,40 @@
             border: 2px solid white;
             display: block;
         }
-
         .gallery-item .filename {
             font-size: 12px;
             text-align: center;
             margin-top: 5px;
             word-break: break-all;
         }
+        .pdf-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+        .pdf-item .pdf-icon {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: rgb(113, 49, 177);
+            font-weight: bold;
+        }
     </style>
 <h3 id="back"><a href="index.html">Back to Portfolio</a></h3>
-
     <h2>My Designs</h2>
-
-    <div id="uploadArea">
-        <input type="file" id="imageInput" accept="image/*" multiple>
+    <div id="gallery">
+        <a class="gallery-item pdf-item" href="Borquillo-Lab-Act1(2).pdf" target="_blank" rel="noopener noreferrer">
+            <div class="pdf-icon">PDF</div>
+            <div class="filename">Borquillo-Lab-Act1(2).pdf</div>
+        </a>
     </div>
-
-    <div id="gallery"></div>
     <div id="lightbox">
         <span id="lightboxClose">&times;</span>
         <img id="lightboxImg" src="" alt="Full size preview">
