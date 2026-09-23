@@ -3,43 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Geisler A. Borquillo — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #17130f;
+            --paper: #f4efe3;
+            --paper-dim: #ece5d4;
+            --ink: #2a2420;
+            --muted: #8f8672;
+            --lab: #3f7d6b;
+            --quiz: #c97a2b;
+            --exam: #a33d3d;
+            --rule: rgba(244, 239, 227, 0.14);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(244, 239, 227, 0.05), transparent 45%),
+                radial-gradient(circle at 85% 0%, rgba(244, 239, 227, 0.04), transparent 40%);
+            color: var(--paper);
+            font-family: "IBM Plex Sans", Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        a { color: inherit; }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 56px 24px 80px;
+        }
+
+        /* ---- hero ---- */
+        .hero {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        #profile {
+            width: 128px;
+            height: 128px;
+            object-fit: cover;
+            border-radius: 4px;
+            border-top: 4px solid var(--lab);
+            background: var(--paper);
+        }
+
+        .kicker {
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 500;
+            font-size: clamp(36px, 6vw, 52px);
+            line-height: 1.05;
+            margin-top: 8px;
+        }
+
+        .role {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #cfc8b8;
+        }
+
+        /* ---- bio ---- */
+        .bio {
+            margin-top: 48px;
+            border-top: 1px solid var(--rule);
+            padding-top: 28px;
+            max-width: 58ch;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #cfc8b8;
+        }
+        .bio p + p { margin-top: 14px; }
+
+        /* ---- skills ---- */
+        .skills {
+            margin-top: 48px;
+            border-top: 1px solid var(--rule);
+            padding-top: 28px;
+        }
+
+        .skills h2 {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 500;
+            font-size: 24px;
+        }
+
+        .skills ul {
+            list-style: none;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px 24px;
+        }
+
+        .skills li {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 15px;
+            color: #cfc8b8;
+        }
+
+        .skills li::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 1px;
+            background: var(--quiz);
+            flex: 0 0 auto;
+            transform: translateY(-1px);
+        }
+
+        /* ---- designs cta ---- */
+        .cta {
+            margin-top: 48px;
+            border-top: 1px solid var(--rule);
+            padding-top: 28px;
+        }
+
+        #design {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 22px 24px;
+            background: var(--paper);
+            border-top: 4px solid var(--exam);
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+        #design:hover, #design:focus-visible { transform: translateY(-2px); }
+
+        #design a {
+            text-decoration: none;
+            color: var(--ink);
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 500;
+            font-size: 22px;
+        }
+
+        #design span.sub {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ---- socials ---- */
+        .socials {
+            margin-top: 48px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .socials a {
+            display: inline-flex;
+        }
+
+        .socials img {
+            width: 26px;
+            height: 26px;
+            opacity: 0.75;
+            transition: opacity 0.15s ease;
+        }
+        .socials a:hover img, .socials a:focus-visible img { opacity: 1; }
+
+        @media (max-width: 480px) {
+            .hero { grid-template-columns: 1fr; }
+            #design { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
-    <h2 >My Portfolio</h2>
-    <hr>
-    <h3 id="design"><a href="Design.html">Designs</a></h3>
-    
-    <div text-align = "center">
-    <img id="profile" src="profile.jpg" alt="Profile picture"  width="200px">
+    <div class="wrap">
+        <div class="hero">
+            <img id="profile" src="profile.jpg" alt="Profile picture">
+            <div>
+                <p class="kicker">Portfolio</p>
+                <h1>Geisler A. Borquillo</h1>
+                <p class="role">BSIT student, Philippine Christian University</p>
+            </div>
+        </div>
+
+        <div class="bio">
+            <p>Hello, welcome to my portfolio! I'm currently studying Information Technology and building up my skills one project at a time.</p>
+            <p>Outside of class, I like to cook, play video games, and watch anime.</p>
+        </div>
+
+        <div class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Figma</li>
+                <li>Arduino</li>
+            </ul>
+        </div>
+
+        <div class="cta">
+            <h3 id="design">
+                <a href="Design.html">Coursework &amp; designs</a>
+                <span class="sub">Labs, quizzes, exams &rarr;</span>
+            </h3>
+        </div>
+
+        <div class="socials">
+            <a id="instagram" href="https://www.instagram.com/gslrrr/" target="_blank" rel="noopener noreferrer">
+                <img src="instaicon.webp" alt="Instagram">
+            </a>
+            <a id="facebook" href="https://www.facebook.com/geisler.borquillo.1/" target="_blank" rel="noopener noreferrer">
+                <img src="fblogo.png" alt="Facebook">
+            </a>
+        </div>
     </div>
-    <pre align = "center">
-    Hello, welcome to my portfolio!
-    My name is Geisler A. Borquillo
-    I like to cook, play video games, and watch anime.
-    I am currently studying at the Philippine Christian University 
-    taking up Bachelor of Science in Information Technology.
 
-    Skills:
-    - Basic understanding in HTML
-    - Basic understanding in CSS
-    - Basic understanding in JavaScript
-    - Basic understanding in Figma
-    - Basic understanding in Arduino
-    </pre>
-    <div text-align = "center">
-        <a id = "instagram" href="https://www.instagram.com/gslrrr/" target="_blank">
-            <img src="instaicon.webp" alt="Instagram icon link" width="50px">
-    
-</a>
-
-        <a id="facebook" href="https://www.facebook.com/geisler.borquillo.1/" target="_blank">
-            <img src="fblogo.png" alt="Facebook icon link" width="50px"> 
-    
-
-</a>
-</div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
