@@ -23,7 +23,13 @@
             text-align: center;
             padding: 15px;
         }
-        #gallery {
+        h3.section-title {
+            padding: 10px 15px 5px 15px;
+            font-size: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            margin: 0 40px;
+        }
+        #gallery-lab, #gallery-quiz, #gallery-exam {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
@@ -78,7 +84,9 @@
     </style>
 <h3 id="back"><a href="index.html">Back to Portfolio</a></h3>
     <h2>My Designs</h2>
-    <div id="gallery">
+
+    <h3 class="section-title">Labs</h3>
+    <div id="gallery-lab">
         <a class="gallery-item pdf-item" href="Borquillo-Lab-Act1(2).pdf" target="_blank" rel="noopener noreferrer">
             <div class="pdf-icon">PDF</div>
             <div class="filename">Borquillo-Lab-Act1(2).pdf</div>
@@ -87,6 +95,22 @@
             <div class="pdf-icon">PDF</div>
             <div class="filename">Borquillo-Lab1.pdf</div>
         </a>
+        <a class="gallery-item img-item" href="Lab 1.png" target="_blank" rel="noopener noreferrer">
+            <img src="Lab 1.png" alt="Lab 1">
+            <div class="filename">Lab 1.png</div>
+        </a>
+        <a class="gallery-item img-item" href="Lab 2.png" target="_blank" rel="noopener noreferrer">
+            <img src="Lab 2.png" alt="Lab 2">
+            <div class="filename">Lab 2.png</div>
+        </a>
+        <a class="gallery-item img-item" href="Lab3.png" target="_blank" rel="noopener noreferrer">
+            <img src="Lab3.png" alt="Lab3.png">
+            <div class="filename">Lab3.png</div>
+        </a>
+    </div>
+
+    <h3 class="section-title">Quizzes</h3>
+    <div id="gallery-quiz">
         <a class="gallery-item img-item" href="Quiz1.png" target="_blank" rel="noopener noreferrer">
             <img src="Quiz1.png" alt="Quiz1">
             <div class="filename">Quiz1.png</div>
@@ -103,23 +127,16 @@
             <img src="Long Quiz.png" alt="Long Quiz">
             <div class="filename">Long Quiz.png</div>
         </a>
-        <a class="gallery-item img-item" href="Lab 1.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab 1.png" alt="Lab 1">
-            <div class="filename">Lab 1.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Lab 2.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab 2.png" alt="Lab 2">
-            <div class="filename">Lab 2.png</div>
-        </a>
+    </div>
+
+    <h3 class="section-title">Exams</h3>
+    <div id="gallery-exam">
         <a class="gallery-item img-item" href="Prelim_exam.jpg" target="_blank" rel="noopener noreferrer">
             <img src="Prelim_exam.jpg" alt="Prelim_exam">
             <div class="filename">Prelim_exam</div>
         </a>
-        <a class="gallery-item img-item" href="Lab3.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab3.png" alt="Lab3.png">
-            <div class="filename">Lab3.png</div>
-        </a>
     </div>
+
     <div id="lightbox">
         <span id="lightboxClose">&times;</span>
         <img id="lightboxImg" src="" alt="Full size preview">
