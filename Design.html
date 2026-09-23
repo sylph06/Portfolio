@@ -3,138 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Designs — Geisler A. Borquillo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-     <style>
+    <style>
+        :root {
+            --bg: #17130f;
+            --paper: #f4efe3;
+            --paper-dim: #ece5d4;
+            --ink: #2a2420;
+            --muted: #8f8672;
+            --lab: #3f7d6b;
+            --quiz: #c97a2b;
+            --exam: #a33d3d;
+            --rule: rgba(244, 239, 227, 0.14);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            color: white;
         }
+
         body {
-            background-color: rgb(113, 49, 177);
-            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(244, 239, 227, 0.05), transparent 45%),
+                radial-gradient(circle at 85% 0%, rgba(244, 239, 227, 0.04), transparent 40%);
+            color: var(--paper);
+            font-family: "IBM Plex Sans", Arial, sans-serif;
             min-height: 100vh;
         }
-        h2, h3 {
-            text-align: center;
-            padding: 15px;
+
+        a { color: inherit; }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
         }
-        h3.section-title {
-            padding: 10px 15px 5px 15px;
-            font-size: 20px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-            margin: 0 40px;
+
+        /* ---- header ---- */
+        header {
+            padding-top: 40px;
         }
-        #gallery-lab, #gallery-quiz, #gallery-exam {
+
+        #back {
+            display: inline-block;
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        #back:hover, #back:focus-visible {
+            color: var(--paper);
+            border-bottom-color: var(--muted);
+        }
+
+        .kicker {
+            margin-top: 32px;
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 500;
+            font-size: clamp(40px, 7vw, 60px);
+            line-height: 1.05;
+            margin-top: 10px;
+            max-width: 12ch;
+        }
+
+        .lede {
+            margin-top: 18px;
+            max-width: 52ch;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #cfc8b8;
+        }
+
+        /* ---- sections ---- */
+        section.shelf {
+            margin-top: 64px;
+        }
+
+        .shelf-head {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            align-items: baseline;
+            gap: 16px;
+            border-top: 1px solid var(--rule);
+            padding-top: 20px;
+        }
+
+        .tab {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex: 0 0 auto;
+            transform: translateY(-1px);
+        }
+        .shelf.lab .tab { background: var(--lab); }
+        .shelf.quiz .tab { background: var(--quiz); }
+        .shelf.exam .tab { background: var(--exam); }
+
+        .shelf-head h2 {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 500;
+            font-size: 26px;
+        }
+
+        .shelf-head p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-left: auto;
+        }
+
+        /* ---- grid ---- */
+        .grid {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 18px;
+        }
+
+        .piece {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            outline-offset: 3px;
+        }
+        .piece:focus-visible { outline: 2px solid var(--paper); }
+
+        .frame {
+            aspect-ratio: 1 / 1;
+            background: var(--paper);
+            border-top: 4px solid var(--lab);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 20px;
-            max-height: 600px;
-            overflow-y: auto;
-            margin: 0 20px 40px 20px;
+            transition: transform 0.15s ease;
         }
-        .gallery-item {
-            position: relative;
+        .shelf.quiz .frame { border-top-color: var(--quiz); }
+        .shelf.exam .frame { border-top-color: var(--exam); }
+
+        .piece:hover .frame, .piece:focus-visible .frame {
+            transform: translateY(-3px);
         }
-        .gallery-item img {
-            width: 200px;
-            height: 200px;
+
+        .frame img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid white;
             display: block;
         }
-        .gallery-item .filename {
-            font-size: 12px;
-            text-align: center;
-            margin-top: 5px;
+
+        .frame.doc {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 600;
+            font-size: 30px;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+            background: var(--paper-dim);
+        }
+
+        .piece .caption {
+            margin-top: 9px;
+            font-family: "Fraunces", Georgia, serif;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--muted);
             word-break: break-all;
         }
-        .pdf-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-        }
-        .pdf-item .pdf-icon {
-            width: 200px;
-            height: 200px;
-            background: white;
-            border-radius: 8px;
-            border: 2px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: rgb(113, 49, 177);
-            font-weight: bold;
-        }
-        .img-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
+        .piece:hover .caption, .piece:focus-visible .caption {
+            color: var(--paper);
         }
     </style>
-<h3 id="back"><a href="index.html">Back to Portfolio</a></h3>
-    <h2>My Designs</h2>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <h3 id="back"><a href="index.html">&larr; Back to portfolio</a></h3>
+            <p class="kicker">Geisler A. Borquillo, BSIT</p>
+            <h1>Coursework &amp; designs</h1>
+            <p class="lede">A running record of labs, quizzes, and exams from my classes at Philippine Christian University — kept in three separate folders so nothing gets lost in the shuffle.</p>
+        </header>
 
-    <h3 class="section-title">Labs</h3>
-    <div id="gallery-lab">
-        <a class="gallery-item pdf-item" href="Borquillo-Lab-Act1(2).pdf" target="_blank" rel="noopener noreferrer">
-            <div class="pdf-icon">PDF</div>
-            <div class="filename">Borquillo-Lab-Act1(2).pdf</div>
-        </a>
-        <a class="gallery-item pdf-item" href="Borquillo-Lab1.pdf" target="_blank" rel="noopener noreferrer">
-            <div class="pdf-icon">PDF</div>
-            <div class="filename">Borquillo-Lab1.pdf</div>
-        </a>
-        <a class="gallery-item img-item" href="Lab 1.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab 1.png" alt="Lab 1">
-            <div class="filename">Lab 1.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Lab 2.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab 2.png" alt="Lab 2">
-            <div class="filename">Lab 2.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Lab3.png" target="_blank" rel="noopener noreferrer">
-            <img src="Lab3.png" alt="Lab3.png">
-            <div class="filename">Lab3.png</div>
-        </a>
-    </div>
+        <section class="shelf lab">
+            <div class="shelf-head">
+                <span class="tab"></span>
+                <h2>Labs</h2>
+                <p>Hands-on activities &amp; reports</p>
+            </div>
+            <div class="grid">
+                <a class="piece" href="Borquillo-Lab-Act1(2).pdf" target="_blank" rel="noopener noreferrer">
+                    <div class="frame doc">PDF</div>
+                    <div class="caption">Borquillo-Lab-Act1(2).pdf</div>
+                </a>
+                <a class="piece" href="Borquillo-Lab1.pdf" target="_blank" rel="noopener noreferrer">
+                    <div class="frame doc">PDF</div>
+                    <div class="caption">Borquillo-Lab1.pdf</div>
+                </a>
+                <a class="piece" href="Lab 1.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Lab 1.png" alt="Lab 1"></div>
+                    <div class="caption">Lab 1.png</div>
+                </a>
+                <a class="piece" href="Lab 2.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Lab 2.png" alt="Lab 2"></div>
+                    <div class="caption">Lab 2.png</div>
+                </a>
+                <a class="piece" href="Lab3.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Lab3.png" alt="Lab3"></div>
+                    <div class="caption">Lab3.png</div>
+                </a>
+            </div>
+        </section>
 
-    <h3 class="section-title">Quizzes</h3>
-    <div id="gallery-quiz">
-        <a class="gallery-item img-item" href="Quiz1.png" target="_blank" rel="noopener noreferrer">
-            <img src="Quiz1.png" alt="Quiz1">
-            <div class="filename">Quiz1.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Quiz2.png" target="_blank" rel="noopener noreferrer">
-            <img src="Quiz2.png" alt="Quiz2">
-            <div class="filename">Quiz2.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Quiz3.png" target="_blank" rel="noopener noreferrer">
-            <img src="Quiz3.png" alt="Quiz3">
-            <div class="filename">Quiz3.png</div>
-        </a>
-        <a class="gallery-item img-item" href="Long Quiz.png" target="_blank" rel="noopener noreferrer">
-            <img src="Long Quiz.png" alt="Long Quiz">
-            <div class="filename">Long Quiz.png</div>
-        </a>
-    </div>
+        <section class="shelf quiz">
+            <div class="shelf-head">
+                <span class="tab"></span>
+                <h2>Quizzes</h2>
+                <p>Short &amp; long assessments</p>
+            </div>
+            <div class="grid">
+                <a class="piece" href="Quiz1.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Quiz1.png" alt="Quiz1"></div>
+                    <div class="caption">Quiz1.png</div>
+                </a>
+                <a class="piece" href="Quiz2.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Quiz2.png" alt="Quiz2"></div>
+                    <div class="caption">Quiz2.png</div>
+                </a>
+                <a class="piece" href="Quiz3.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Quiz3.png" alt="Quiz3"></div>
+                    <div class="caption">Quiz3.png</div>
+                </a>
+                <a class="piece" href="Long Quiz.png" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Long Quiz.png" alt="Long Quiz"></div>
+                    <div class="caption">Long Quiz.png</div>
+                </a>
+            </div>
+        </section>
 
-    <h3 class="section-title">Exams</h3>
-    <div id="gallery-exam">
-        <a class="gallery-item img-item" href="Prelim_exam.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="Prelim_exam.jpg" alt="Prelim_exam">
-            <div class="filename">Prelim_exam</div>
-        </a>
+        <section class="shelf exam">
+            <div class="shelf-head">
+                <span class="tab"></span>
+                <h2>Exams</h2>
+                <p>Prelim &amp; term exams</p>
+            </div>
+            <div class="grid">
+                <a class="piece" href="Prelim_exam.jpg" target="_blank" rel="noopener noreferrer">
+                    <div class="frame"><img src="Prelim_exam.jpg" alt="Prelim exam"></div>
+                    <div class="caption">Prelim_exam.jpg</div>
+                </a>
+            </div>
+        </section>
     </div>
 
     <div id="lightbox">
